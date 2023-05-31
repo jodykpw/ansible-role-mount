@@ -1,0 +1,38 @@
+---
+- name: Process mount requests
+  when:
+    - mount_points is defined
+  block:
+    - name: Creating mountpoint
+      ansible.builtin.file:
+        path: "{{ item.path }}"
+        state: directory
+        mode: "{{ item.mode | default(mount_default_mode) }}"
+        owner: "{{ item.owner | default(mount_default_owner) }}"
+        group: "{{ item.group | default(mount_default_group) }}"
+      loop: "{{ mount_points }}"
+      loop_control:
+        label: "{{ item.path }}"
+
+    - name: Editing "{{ item.fstab | default('/etc/fstab') }}"
+      ansible.posix.mount:
+        backup: "{{ item.backup | default(omit) }}"
+        boot: "{{ item.boot | default(omit) }}"
+        dump: "{{ item.dump | default(omit) }}"
+        fstab: "{{ item.fstab | default('/etc/fstab') }}"
+        fstype: "{{ item.fstype | default(omit) }}"
+        opts: "{{ item.opts | default(omit) }}"
+        passno: "{{ item.passno | default(omit) }}"
+        path: "{{ item.path }}"
+        src: "{{ item.src | default(omit) }}"
+        state: "{{ item.state | default('mounted') }}"
+      loop: "{{ mount_points }}"
+      loop_control:
+        label: "{{ item.path }}"
+
+- name: Read fstab file
+  ansible.builtin.shell: cat /etc/fstab
+  register: fstab_output
+- name: Display fstab content
+  ansible.builtin.debug:
+    var: fstab_output

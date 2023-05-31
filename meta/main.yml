@@ -1,0 +1,15 @@
+galaxy_info:
+  author: Jody WAN
+  description: Ansible role for managing mount points.
+  linkedin: https://www.linkedin.com/in/jodywan/
+  website: https://www.jodywan.com
+  license: "license (BSD, MIT)"
+  min_ansible_version: 2.12
+  platforms:
+  - name: EL
+    versions:
+    - 8
+  galaxy_tags:
+    - system
+    - server
+    - mount

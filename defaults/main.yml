@@ -1,0 +1,10 @@
+---
+mount_default_mode: "700"
+mount_default_owner: root
+mount_default_group: root
+mount_points:
+  - path: /data/nas/devbox-1/hdd
+    src: 10.1.4.101:/devbox-1
+    opts: intr,noatime,vers=4.1,rsize=32768,wsize=32768
+    fstype: nfs
+    state: mounted
