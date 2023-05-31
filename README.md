@@ -5,8 +5,12 @@ An Ansible role for managing mount points.
 
 Requirements
 ------------
+This Ansible role has been developed and thoroughly tested with Ansible Core version 2.15.0.
 
-The target host should be running a compatible operating system and have the `mount` command available.
+This role was designed for:
+
+- CentOS 8 Stream
+- RHEL 8
 
 Role Variables
 --------------
@@ -42,16 +46,12 @@ Example absent_from_fstab specifies that the device mount’s entry will be remo
 Dependencies
 ------------
 
-This role depends on the following Ansible Galaxy collections:
-
-- `community.general`: Provides a wide range of additional modules and plugins for Ansible.
-- `ansible.posix`: Offers modules specifically designed for POSIX-compliant systems, including the `mount` module.
+[ansible-galaxy-requirements.yml](ansible-galaxy-requirements.yml)
 
 You can install these collections using the following commands:
 
 ```shell
-ansible-galaxy collection install community.general
-ansible-galaxy collection install ansible.posix
+ansible-galaxy role install -r ansible-galaxy-requirements.yml
 ```
 
 Example Playbook
