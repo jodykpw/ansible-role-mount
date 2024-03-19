@@ -6,9 +6,12 @@ galaxy_info:
   license: "license (BSD, MIT)"
   min_ansible_version: 2.12
   platforms:
-  - name: EL
-    versions:
-    - 8
+    - name: EL
+      versions:
+        - 8
+    - name: Ubuntu
+      versions:
+        - jammy
   galaxy_tags:
     - system
     - server
