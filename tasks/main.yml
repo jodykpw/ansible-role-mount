@@ -31,7 +31,7 @@
         label: "{{ item.path }}"
 
 - name: Read fstab file
-  ansible.builtin.shell: cat /etc/fstab
+  ansible.builtin.command: cat /etc/fstab
   register: fstab_output
 - name: Display fstab content
   ansible.builtin.debug:
